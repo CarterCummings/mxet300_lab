@@ -88,8 +88,7 @@ def displayText():
     draw = ImageDraw.Draw(image)                                            #create a draw object so text and shapes can be drawn
     draw.rectangle((0, 0, oled.width, oled.height), outline=0, fill=0)      #draw a blank, filled rectangle the size of the screen to clear it
 
-    font = ImageFont.load_default()                                         #load the default font for text
-
+    font = ImageFont.load_default()                                        #load the default font for text
     #################################################
     # Task: Line 96  will write to the display the robot name specified in the " ". 
     #       Uncomment the line and give it a name of your choice. 
