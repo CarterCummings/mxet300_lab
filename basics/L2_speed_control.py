@@ -14,11 +14,19 @@ DRS = 1.0                                           # direct rescaling - for ope
 
 kp_left = 0.04                                           # proportional term
 ki_left = 0.04                                           # integral term
+<<<<<<< HEAD
 kd_left = 0.04                                            # derivative term
 
 kp_right = 0.04                                           # proportional term
 ki_right = 0.04                                           # integral term
 kd_right = 0.04                                            # derivative term
+=======
+kd_left = 0.00                                            # derivative term
+
+kp_right = 0.04                                           # proportional term
+ki_right = 0.04                                           # integral term
+kd_right = 0.00                                            # derivative term
+>>>>>>> bf26914b9c9a579227c926f41c8ec05e0db78bd2
 pidGains = np.array([[kp_left, kp_right], 
                      [ki_left, ki_right], 
                      [kd_left, kd_right]])                   # form an array to collect pid gains.
