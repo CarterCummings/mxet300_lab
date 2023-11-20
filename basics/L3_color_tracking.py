@@ -92,7 +92,7 @@ def main():
 
             height, width, channels = image.shape                       # Get shape of image
 
-            thresh = cv2.inRange(image, (v1_min, v2_min, v3_min), (v1_max, v2_max, v3_max))   # Find all pixels in color range
+            thresh = cv2.inRange(image, (v1_min[state], v2_min[state], v3_min[state]), (v1_max[state], v2_max[state], v3_max[state]))   # Find all pixels in color range
 
             kernel = np.ones((5,5),np.uint8)                            # Set kernel size
             mask = cv2.morphologyEx(thresh, cv2.MORPH_OPEN, kernel)     # Open morph: removes noise w/ erode followed by dilate
