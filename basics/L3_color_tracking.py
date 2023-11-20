@@ -12,6 +12,18 @@ from math import radians, pi
 import L2_vector as vec
 import L1_lidar as lid
 
+def wander(): 
+    cord = vec.getNearest()
+    if (cord[0] < .5 and cord[1] > -60 and cord[1] < 60):
+        sc.driveOpenLoop(ik.getPdTargets([-0.25, 0])) 
+        sleep(1)
+        sc.driveOpenLoop(ik.getPdTargets([0, 0.9]))
+        sleep(.5)
+    else:
+        sc.driveOpenLoop(ik.getPdTargets([0.25, 0])) 
+        sleep(.5)
+
+
 # Gets IP to grab MJPG stream
 def getIp():
     for interface in ni.interfaces()[1:]:   #For interfaces eth0 and wlan0
@@ -40,11 +52,11 @@ fov = 1         # Camera field of view in rad (estimate)
 
 #    Color Range, described in HSV
 v1_min = 0      # Minimum H value
-v2_min = 85     # Minimum S value
-v3_min = 185     # Minimum V value
+v2_min = 0     # Minimum S value
+v3_min = 0     # Minimum V value
 
 v1_max = 255     # Maximum H value
-v2_max = 180    # Maximum S value
+v2_max = 255    # Maximum S value
 v3_max = 255    # Maximum V value
 #Red ball
 #v1_min = 120     # Minimum H value
@@ -88,7 +100,7 @@ angle_margin = 0.12      # Radians object can be from image center to be conside
 width_margin = 3       # Minimum width error to drive forward/back
 
 def main():
-    state = '1'
+    state = 1
     # Try opening camera with default method
     try:
         camera = cv2.VideoCapture(0)    
@@ -124,7 +136,8 @@ def main():
             cnts = cv2.findContours(mask.copy(), cv2.RETR_EXTERNAL,
                     cv2.CHAIN_APPROX_SIMPLE)[-2]                        # Find closed shapes in image
             
-            if len(cnts) and len(cnts) < 3:                             # If more than 0 and less than 3 closed shapes exist
+            #if len(cnts) and len(cnts) < 3:                             # If more than 0 and less than 3 closed shapes exist
+            if (False):
 
                 c = max(cnts, key=cv2.contourArea)                      # return the largest target area
                 x,y,w,h = cv2.boundingRect(c)                           # Get bounding rectangle (x,y,w,h) of the largest contour
@@ -186,14 +199,5 @@ if __name__ == '__main__':
     main()
 
 
-def wander(): 
-    cord = vec.getNearest()
-    if (cord[0] < .5 && cord[1] > -60 && cord[1] < 60):
-        sc.driveOpenLoop(ik.getPdTargets([-0.25, 0])) 
-        sleep(1)
-        sc.driveOpenLoop(ik.getPdTargets([0, 0.5]))
-        sleep(.45)
-    else:
-        sc.driveOpenLoop(ik.getPdTargets([0.25, 0])) 
-        sleep(.5)
+
 
