@@ -14,7 +14,6 @@ class MyFilter:
     def colorTracking(self, image, range=color_range, min_size=6, max_size=6):
 
         image = cv2.resize(image,(width,height)) # resize the image
-<<<<<<< HEAD
         # define the contrast and brightness value
         contrast = 100. # Contrast control ( 0 to 127)
         brightness = 100. # Brightness control (0-100)
@@ -23,11 +22,6 @@ class MyFilter:
 
 # Grab the HSV inputs from the NodeRed selections by accesing the files 
         hsv_image = cv2.bitwise_not(cv2.cvtColor(image, cv2.COLOR_BGR2HSV))  # convert image to hsv colorspace RENAME THIS TO IMAGE_HSV
-=======
-
-# Grab the HSV inputs from the NodeRed selections by accesing the files 
-        hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)  # convert image to hsv colorspace RENAME THIS TO IMAGE_HSV
->>>>>>> c5e95741609d44fd429b9b5a96d29753025b0375
 
         with open('/tmp/h_min') as h_min_file:
             h_min_file.seek(0)
