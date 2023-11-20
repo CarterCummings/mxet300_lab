@@ -52,11 +52,11 @@ fov = 1         # Camera field of view in rad (estimate)
 
 #    Color Range, described in HSV
 v1_min = 0      # Minimum H value
-v2_min = 0     # Minimum S value
-v3_min = 0     # Minimum V value
+v2_min = 85     # Minimum S value
+v3_min = 185     # Minimum V value
 
 v1_max = 255     # Maximum H value
-v2_max = 255    # Maximum S value
+v2_max = 180    # Maximum S value
 v3_max = 255    # Maximum V value
 #Red ball
 #v1_min = 120     # Minimum H value
@@ -72,27 +72,9 @@ v3_max = 255    # Maximum V value
 #v2_min = 30     # Minimum S value
 #v3_min = 140     # Minimum V value
 
-#v1_max = 65     # Maximum H value
-#v2_max = 255    # Maximum S value
-#v3_max = 255    # Maximum V value
-
-#Pink ball Create an if statment move it to the RGB space 
-#v1_min = 25      # Minimum H value
-#v2_min = 30     # Minimum S value
-#v3_min = 140     # Minimum V value
-
-#v1_max = 65     # Maximum H value
-#v2_max = 255    # Maximum S value
-#v3_max = 255    # Maximum V value
-
-#Orange Ball 
-#v1_min = 0      # Minimum H value
-#v2_min = 85     # Minimum S value
-#v3_min = 185     # Minimum V value
-
-#v1_max = 255     # Maximum H value
-#v2_max = 180    # Maximum S value
-#v3_max = 255    # Maximum V value
+#v1_max = [235,250,155]    # Maximum H value
+#v2_max = [230,160,255]    # Maximum S value
+#v3_max = [25,0,255]    # Maximum V value
 
 
 target_width = 20      # Target pixel width of tracked object
@@ -136,8 +118,7 @@ def main():
             cnts = cv2.findContours(mask.copy(), cv2.RETR_EXTERNAL,
                     cv2.CHAIN_APPROX_SIMPLE)[-2]                        # Find closed shapes in image
             
-            #if len(cnts) and len(cnts) < 3:                             # If more than 0 and less than 3 closed shapes exist
-            if (False):
+            if len(cnts) and len(cnts) < 3:                             # If more than 0 and less than 3 closed shapes exist
 
                 c = max(cnts, key=cv2.contourArea)                      # return the largest target area
                 x,y,w,h = cv2.boundingRect(c)                           # Get bounding rectangle (x,y,w,h) of the largest contour
@@ -197,7 +178,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-
 
