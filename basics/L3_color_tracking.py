@@ -50,31 +50,13 @@ size_h = 160	# Resized image height. This is the image height in pixels.
 
 fov = 1         # Camera field of view in rad (estimate)
 
-#    Color Range, described in HSV
-v1_min = 0      # Minimum H value
-v2_min = 85     # Minimum S value
-v3_min = 185     # Minimum V value
+v1_min = [180,235,145]      # Minimum H value
+v2_min = [145,70,0]     # Minimum S value
+v3_min = [0,0,50]    # Minimum V value
 
-v1_max = 255     # Maximum H value
-v2_max = 180    # Maximum S value
-v3_max = 255    # Maximum V value
-#Red ball
-#v1_min = 120     # Minimum H value
-#v2_min = 50   # Minimum S value
-#v3_min = 210    # Minimum V value
-
-#v1_max = 255     # Maximum H value
-#v2_max = 155    # Maximum S value
-#v3_max = 255    # Maximum V value
-
-#Green ball Create an if statment move it to the RGB space 
-#v1_min = 25      # Minimum H value
-#v2_min = 30     # Minimum S value
-#v3_min = 140     # Minimum V value
-
-#v1_max = [235,250,155]    # Maximum H value
-#v2_max = [230,160,255]    # Maximum S value
-#v3_max = [25,0,255]    # Maximum V value
+v1_max = [235,250,155]    # Maximum H value
+v2_max = [230,160,255]    # Maximum S value
+v3_max = [25,0,255]    # Maximum V value
 
 
 target_width = 20      # Target pixel width of tracked object
