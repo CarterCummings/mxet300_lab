@@ -9,11 +9,8 @@ import L2_kinematics as kin
 import netifaces as ni
 from time import sleep
 from math import radians, pi
-<<<<<<< HEAD
 import L2_vector as vec
 import L1_lidar as lid
-=======
->>>>>>> c5e95741609d44fd429b9b5a96d29753025b0375
 
 # Gets IP to grab MJPG stream
 def getIp():
@@ -43,7 +40,6 @@ fov = 1         # Camera field of view in rad (estimate)
 
 #    Color Range, described in HSV
 v1_min = 0      # Minimum H value
-<<<<<<< HEAD
 v2_min = 85     # Minimum S value
 v3_min = 185     # Minimum V value
 
@@ -93,20 +89,6 @@ width_margin = 3       # Minimum width error to drive forward/back
 
 def main():
     state = '1'
-=======
-v2_min = 90     # Minimum S value
-v3_min = 145     # Minimum V value
-
-v1_max = 20     # Maximum H value
-v2_max = 210    # Maximum S value
-v3_max = 250    # Maximum V value
-
-target_width = 100      # Target pixel width of tracked object
-angle_margin = 0.2      # Radians object can be from image center to be considered "centered"
-width_margin = 10       # Minimum width error to drive forward/back
-
-def main():
->>>>>>> c5e95741609d44fd429b9b5a96d29753025b0375
     # Try opening camera with default method
     try:
         camera = cv2.VideoCapture(0)    
@@ -118,11 +100,7 @@ def main():
 
     camera.set(3, size_w)                       # Set width of images that will be retrived from camera
     camera.set(4, size_h)                       # Set height of images that will be retrived from camera
-<<<<<<< HEAD
     alignedCount = 0
-=======
-
->>>>>>> c5e95741609d44fd429b9b5a96d29753025b0375
     try:
         while True:
             sleep(.05)                                          
@@ -163,7 +141,6 @@ def main():
                     if abs(e_width) < width_margin:
                         sc.driveOpenLoop(np.array([0.,0.]))             # Stop when centered and aligned
                         print("Aligned! ",w)
-<<<<<<< HEAD
                         alignedCount += 1
                         if(alignedCount >= 10) :
                             sc.driveOpenLoop(ik.getPdTargets([0, 0.5]))
@@ -175,9 +152,6 @@ def main():
                         continue
                     else : 
                         alignedCount = 0
-=======
-                        continue
->>>>>>> c5e95741609d44fd429b9b5a96d29753025b0375
 
                     fwd_effort = e_width/target_width                   
                     
@@ -192,12 +166,9 @@ def main():
                 print("Angle: ", angle, " | Target L/R: ", *wheel_speed, " | Measured L\R: ", *wheel_measured)
 
             else:
-<<<<<<< HEAD
                 
                 wander()
 
-=======
->>>>>>> c5e95741609d44fd429b9b5a96d29753025b0375
                 print("No targets")
                 sc.driveOpenLoop(np.array([0.,0.]))         # stop if no targets detected
 
@@ -210,10 +181,7 @@ def main():
 
 if __name__ == '__main__':
     main()
-<<<<<<< HEAD
 
 
 def wander(): 
-    ld.
-=======
->>>>>>> c5e95741609d44fd429b9b5a96d29753025b0375
+    true
