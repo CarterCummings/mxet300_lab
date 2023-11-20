@@ -167,8 +167,11 @@ def main():
 
             else:
                 
-                wander()
+                wander(state)
 
+                state += 1
+                if (state > 2):
+                    state = 0
                 print("No targets")
                 sc.driveOpenLoop(np.array([0.,0.]))         # stop if no targets detected
 
@@ -183,5 +186,8 @@ if __name__ == '__main__':
     main()
 
 
-def wander(): 
-    true
+def wander(state): 
+    vec.getNearest()
+    
+    
+
