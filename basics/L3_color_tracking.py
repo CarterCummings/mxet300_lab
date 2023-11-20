@@ -12,6 +12,17 @@ from math import radians, pi
 import L2_vector as vec
 import L1_lidar as lid
 
+def wander(): 
+    cord = vec.getNearest()
+    if (cord[0] < .5 && cord[1] > -60 && cord[1] < 60):
+        sc.driveOpenLoop(ik.getPdTargets([-0.25, 0])) 
+        sleep(1)
+        sc.driveOpenLoop(ik.getPdTargets([0, 0.5]))
+        sleep(.45)
+    else:
+        sc.driveOpenLoop(ik.getPdTargets([0.25, 0])) 
+        sleep(.5)
+
 # Gets IP to grab MJPG stream
 def getIp():
     for interface in ni.interfaces()[1:]:   #For interfaces eth0 and wlan0
@@ -39,48 +50,14 @@ size_h = 160	# Resized image height. This is the image height in pixels.
 fov = 1         # Camera field of view in rad (estimate)
 
 #    Color Range, described in HSV
-v1_min = 0      # Minimum H value
-v2_min = 85     # Minimum S value
-v3_min = 185     # Minimum V value
+#green case 0 , orange case 1 , blue case 2 BLUE NEEDS CHANGING
+#v1_min = [180,235,145]      # Minimum H value
+#v2_min = [145,70,0]     # Minimum S value
+#v3_min = [0,0,50]    # Minimum V value
 
-v1_max = 255     # Maximum H value
-v2_max = 180    # Maximum S value
-v3_max = 255    # Maximum V value
-#Red ball
-#v1_min = 120     # Minimum H value
-#v2_min = 50   # Minimum S value
-#v3_min = 210    # Minimum V value
-
-#v1_max = 255     # Maximum H value
-#v2_max = 155    # Maximum S value
-#v3_max = 255    # Maximum V value
-
-#Green ball Create an if statment move it to the RGB space 
-#v1_min = 25      # Minimum H value
-#v2_min = 30     # Minimum S value
-#v3_min = 140     # Minimum V value
-
-#v1_max = 65     # Maximum H value
-#v2_max = 255    # Maximum S value
-#v3_max = 255    # Maximum V value
-
-#Pink ball Create an if statment move it to the RGB space 
-#v1_min = 25      # Minimum H value
-#v2_min = 30     # Minimum S value
-#v3_min = 140     # Minimum V value
-
-#v1_max = 65     # Maximum H value
-#v2_max = 255    # Maximum S value
-#v3_max = 255    # Maximum V value
-
-#Orange Ball 
-#v1_min = 0      # Minimum H value
-#v2_min = 85     # Minimum S value
-#v3_min = 185     # Minimum V value
-
-#v1_max = 255     # Maximum H value
-#v2_max = 180    # Maximum S value
-#v3_max = 255    # Maximum V value
+#v1_max = [235,250,155]    # Maximum H value
+#v2_max = [230,160,255]    # Maximum S value
+#v3_max = [25,0,255]    # Maximum V value
 
 
 target_width = 20      # Target pixel width of tracked object
@@ -186,14 +163,4 @@ if __name__ == '__main__':
     main()
 
 
-def wander(): 
-    cord = vec.getNearest()
-    if (cord[0] < .5 && cord[1] > -60 && cord[1] < 60):
-        sc.driveOpenLoop(ik.getPdTargets([-0.25, 0])) 
-        sleep(1)
-        sc.driveOpenLoop(ik.getPdTargets([0, 0.5]))
-        sleep(.45)
-    else:
-        sc.driveOpenLoop(ik.getPdTargets([0.25, 0])) 
-        sleep(.5)
 
