@@ -167,7 +167,7 @@ def main():
 
             else:
                 
-                wander(state)
+                wander()
 
                 state += 1
                 if (state > 2):
@@ -186,8 +186,14 @@ if __name__ == '__main__':
     main()
 
 
-def wander(state): 
-    vec.getNearest()
-    
-    
+def wander(): 
+    cord = vec.getNearest()
+    if (cord[0] < .5 && cord[1] > -60 && cord[1] < 60):
+        sc.driveOpenLoop(ik.getPdTargets([-0.25, 0])) 
+        sleep(1)
+        sc.driveOpenLoop(ik.getPdTargets([0, 0.5]))
+        sleep(.45)
+    else:
+        sc.driveOpenLoop(ik.getPdTargets([0.25, 0])) 
+        sleep(.5)
 
