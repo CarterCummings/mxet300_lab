@@ -118,13 +118,30 @@ def main():
                         sc.driveOpenLoop(np.array([0.,0.]))             # Stop when centered and aligned
                         print("Aligned! ",w)
                         alignedCount += 1
-                        if(alignedCount >= 10) :
-                            sc.driveOpenLoop(ik.getPdTargets([0, 0.5]))
-                            sleep(.45)
-                            sc.driveOpenLoop(ik.getPdTargets([0.25, 0]))
-                            sleep(3)
-                            alignedCount = 0
-                            print("collected")
+                        if (state == 0):
+                            if(alignedCount >= 10) :
+                                sc.driveOpenLoop(ik.getPdTargets([0, 0.5]))
+                                sleep(.45)
+                                sc.driveOpenLoop(ik.getPdTargets([0.25, 0]))
+                                sleep(3)
+                                alignedCount = 0
+                        if (state == 1):
+                            if(alignedCount >= 10) :
+                                sc.driveOpenLoop(ik.getPdTargets([0, 0.5]))
+                                sleep(.45)
+                                sc.driveOpenLoop(ik.getPdTargets([0.25, 0]))
+                                sleep(3)
+                                alignedCount = 0
+                        if (state == 2):
+                            if(alignedCount >= 10) :
+                                sc.driveOpenLoop(ik.getPdTargets([0, 0.5]))
+                                sleep(.45)
+                                sc.driveOpenLoop(ik.getPdTargets([0.25, 0]))
+                                sleep(3)
+                                alignedCount = 0
+
+
+                        print("collected")    
                         continue
                     else : 
                         alignedCount = 0
