@@ -14,11 +14,7 @@ class MyFilter:
     def colorTracking(self, image, range=color_range, min_size=6, max_size=6):
 
         image = cv2.resize(image,(width,height)) # resize the image
-        # define the contrast and brightness value
-        contrast = 100. # Contrast control ( 0 to 127)
-        brightness = 100. # Brightness control (0-100)
-        # call addWeighted function. use beta = 0 to effectively only
-        image = cv2.addWeighted( image, 1 , image, 0, 1)
+        #image = cv2.addWeighted( image, 1 , image, 0, 1)
 
 # Grab the HSV inputs from the NodeRed selections by accesing the files 
         hsv_image = cv2.bitwise_not(cv2.cvtColor(image, cv2.COLOR_BGR2HSV))  # convert image to hsv colorspace RENAME THIS TO IMAGE_HSV
@@ -66,7 +62,7 @@ class MyFilter:
         color_range = (((h_min), (s_min), (v_min)),((h_max), (s_max), (v_max)))
         thresh = cv2.inRange(hsv_image, color_range[0], color_range[1]) # Converts a 240x160x3 matrix to a 240x160x1 matrix
         # cv2.inrange discovers the pixels that fall within the specified range and assigns 1's to these pixels and 0's to the others.
-
+        print(thresh)
         # apply a blur function
         kernel = np.ones((5,5),np.uint8)
         mask = cv2.morphologyEx(thresh, cv2.MORPH_OPEN, kernel) # Apply blur
