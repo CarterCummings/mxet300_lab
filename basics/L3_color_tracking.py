@@ -19,6 +19,7 @@ def wander():
         sleep(1)
         sc.driveOpenLoop(ik.getPdTargets([0, 0.9]))
         sleep(.5)
+        print("Turning")
     else:
         sc.driveOpenLoop(ik.getPdTargets([0.25, 0])) 
         sleep(.5)
@@ -125,20 +126,23 @@ def main():
                                 sc.driveOpenLoop(ik.getPdTargets([0.25, 0]))
                                 sleep(3)
                                 alignedCount = 0
+                                print("Collect 0")
                         if (state == 1):
                             if(alignedCount >= 10) :
-                                sc.driveOpenLoop(ik.getPdTargets([0, 0.5]))
-                                sleep(.45)
+                                #sc.driveOpenLoop(ik.getPdTargets([0, 0.5]))
+                                #sleep(.45)
                                 sc.driveOpenLoop(ik.getPdTargets([0.25, 0]))
                                 sleep(3)
                                 alignedCount = 0
+                                print("Collect 1")
                         if (state == 2):
                             if(alignedCount >= 10) :
-                                sc.driveOpenLoop(ik.getPdTargets([0, 0.5]))
+                                sc.driveOpenLoop(ik.getPdTargets([0, -0.5]))
                                 sleep(.45)
                                 sc.driveOpenLoop(ik.getPdTargets([0.25, 0]))
                                 sleep(3)
                                 alignedCount = 0
+                                print("Collect 0")
 
 
                         print("collected")    
@@ -166,6 +170,7 @@ def main():
                 if (state > 2):
                     state = 0
                 print("No targets")
+                print(state)
                 sc.driveOpenLoop(np.array([0.,0.]))         # stop if no targets detected
 
                 
